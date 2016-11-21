@@ -5,6 +5,6 @@
     <text class="userinfo-nickname">{{userInfo.nickName}}</text>
   </view>
   <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+    <button type="primary" bindtap="bindBtn">2秒后改变下一页的文字</button>
   </view>
 </view>

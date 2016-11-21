@@ -1,14 +1,19 @@
 //logs.js
-var util = require('../../utils/util.js')
+const app = getApp()
+const Store = app.Store
+const dispatch = Store.dispatch
+
 Page({
   data: {
-    logs: []
+    foo: ''
   },
-  onLoad: function () {
-    this.setData({
-      logs: (wx.getStorageSync('logs') || []).map(function (log) {
-        return util.formatTime(new Date(log))
-      })
+  onLoad() {
+    this.unsubStore = Store.subscribe(() => {
+      const foo = Store.getState().myText
+      this.setData({ foo })
     })
+  },
+  onUnload() {
+    this.unsubStore()
   }
 })

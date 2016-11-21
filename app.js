@@ -1,5 +1,11 @@
 //app.js
+import { createStore, combineReducers } from './lib/redux.min'
+import reducers from './reducers'
+
+const Store = createStore(combineReducers(reducers))
+
 App({
+  Store,
   onLaunch: function () {
     //调用API从本地缓存中获取数据
     var logs = wx.getStorageSync('logs') || []
