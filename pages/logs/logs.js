@@ -8,10 +8,13 @@ Page({
     foo: ''
   },
   onLoad() {
-    this.unsubStore = Store.subscribe(() => {
+    const updateDate = () => {
       const foo = Store.getState().myText
       this.setData({ foo })
-    })
+    }
+
+    updateDate();
+    this.unsubStore = Store.subscribe(() => updateDate())
   },
   onUnload() {
     this.unsubStore()
